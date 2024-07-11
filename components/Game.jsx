@@ -91,8 +91,6 @@ export default function Game() {
     currentPlayer = gameLog[0].playerSymbol === "X" ? "O" : "X";
   }
 
-  console.log("winner: ", winner);
-
   function handleReset() {
     setGameLog([]);
   }

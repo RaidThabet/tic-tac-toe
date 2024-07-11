@@ -10,7 +10,13 @@ export default function Board({ gameBoard, onSelect }) {
           <button
             onClick={(event) => onSelect(rowIndex, colIndex)}
             disabled={squareSymbol ? true : false}
-            className={"board-square " + squareSymbol}
+            className={
+              "board-square " +
+              "board-square-" +
+              squareSymbol +
+              " " +
+              squareSymbol
+            }
             key={uuidv4()}
           >
             {squareSymbol}
