@@ -1,0 +1,238 @@
+@import url("https://fonts.googleapis.com/css2?family=Playwrite+DK+Uloopet:wght@100..400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
+
+body {
+  margin: 0;
+  background-color: rgb(0, 25, 50);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#logo {
+  max-width: 50px;
+  max-height: 50px;
+
+  border: 3px solid white;
+  border-radius: 7px;
+}
+
+#logo-text {
+  font-family: "Playwrite DK Uloopet", cursive;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+header {
+  width: 100%;
+  height: 100%;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border: 3px solid white;
+  border-radius: 10px;
+  background-color: rgba(0, 35, 71, 0.175);
+  width: 700px;
+  height: 600px;
+  margin-bottom: 18px;
+  padding: 5px;
+}
+
+.menu-container {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  align-self: stretch;
+}
+
+#players {
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 15px;
+}
+
+.player {
+  border: 2px solid transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+  padding: 0px 25px;
+  gap: 25px;
+  width: 210px;
+}
+
+.playing {
+  border: 2px solid white;
+  animation: glowAnimation 2s infinite;
+}
+
+.player button {
+  font-family: "Oswald", sans-serif;
+  width: 70px;
+  border-radius: 10px;
+  font-size: 15px;
+  padding: 1px 20px;
+  background-color: rgb(232, 232, 232);
+  border: 2px solid rgb(0, 35, 71);
+  border: 2px solid transparent;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.player-name {
+  font-family: "Oswald", sans-serif;
+  color: white;
+  font-size: 15px;
+  text-align: center;
+}
+
+.player input {
+  font-family: "Oswald", sans-serif;
+  font-size: 15px;
+  max-width: 60px;
+  background-color: rgb(49, 76, 102);
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+  animation: pulseAnimation 1.5s infinite;
+}
+
+.player input:focus {
+  animation: none;
+}
+
+.player-symbol {
+  font-family: "Playwrite DK Uloopet", cursive;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.X {
+  color: rgb(244, 99, 120);
+}
+
+.O {
+  color: rgb(83, 150, 212);
+}
+
+button#reset {
+  font-family: "Oswald", sans-serif;
+  border-radius: 10px;
+  font-size: 15px;
+  padding: 7px 20px;
+  color: rgb(0, 35, 71);
+  background-color: rgba(232, 232, 232, 0.337);
+  border: 2px solid transparent;
+  transition: 0.3s;
+}
+
+button#reset:hover {
+  background-color: green;
+  color: white;
+  border: 2px solid rgb(0, 35, 71);
+  cursor: pointer;
+}
+
+#board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  position: center;
+  row-gap: 15px;
+  column-gap: 15px;
+}
+
+.board-square {
+  font-family: "Playwrite DK Uloopet", cursive;
+  font-size: 100px;
+  font-weight: bold;
+  background-color: rgba(167, 167, 244, 0.477);
+  height: 150px;
+  width: 150px;
+  border: none;
+  /* margin: 5px; */
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.game-over {
+  color: orange;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.game-over p {
+  font-family: "Oswald", sans-serif;
+  font-size: 50px;
+}
+
+.game-over h1 {
+  margin: 0;
+  font-family: "Oswald", sans-serif;
+  font-size: 100px;
+}
+
+.game-over button {
+  font-family: "Oswald", sans-serif;
+  background-color: white;
+  color: green;
+  font-size: 25px;
+  padding: 7px 20px;
+  border-radius: 15px;
+  transition: 0.3s;
+  border: none;
+}
+
+.game-over button:hover {
+  background-color: green;
+  color: white;
+  cursor: pointer;
+}
+
+@keyframes pulseAnimation {
+  0% {
+    background-color: rgb(49, 76, 102); /* Original color */
+  }
+  50% {
+    background-color: rgb(69, 96, 122); /* Lighter shade for the pulse effect */
+  }
+  100% {
+    background-color: rgb(49, 76, 102); /* Original color */
+  }
+}
+
+@keyframes glowAnimation {
+  0% {
+    border-color: #f6e35a;
+    box-shadow: 0 0 0 0 rgba(246, 227, 90, 0.4);
+  }
+  50% {
+    border-color: #f8c031;
+    box-shadow: 0 0 0 0.5rem rgba(248, 165, 49, 0);
+  }
+  100% {
+    border-color: #f6e35a;
+    box-shadow: 0 0 0 0 rgba(246, 227, 90, 0);
+  }
+}
