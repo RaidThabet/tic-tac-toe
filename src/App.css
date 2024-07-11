@@ -89,7 +89,7 @@ main {
 .player button {
   font-family: "Oswald", sans-serif;
   width: 70px;
-  border-radius: 10px;
+  border-radius: 5px;
   font-size: 15px;
   padding: 1px 20px;
   background-color: rgb(232, 232, 232);
@@ -138,9 +138,9 @@ main {
 
 button#reset {
   font-family: "Oswald", sans-serif;
-  border-radius: 10px;
-  font-size: 15px;
-  padding: 7px 20px;
+  border-radius: 5px;
+  font-size: 17px;
+  padding: 2px 20px;
   color: rgb(0, 35, 71);
   background-color: rgba(232, 232, 232, 0.337);
   border: 2px solid transparent;
