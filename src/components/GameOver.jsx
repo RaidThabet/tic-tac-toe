@@ -6,7 +6,7 @@ export default function GameOver({ winner, onRestart }) {
       {winner === "DRAW" ? (
         <p>GAME ENDED WITH A DRAW.</p>
       ) : (
-        <p>{winner} WON!</p>
+        <p>PLAYER {winner} WON!</p>
       )}
       <button onClick={onRestart}>RESTART</button>
     </div>

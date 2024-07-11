@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import { v4 as uuidv4 } from "uuid";
 
-export default function Board({ gameBoard, onSelect }) {
+export default function Board({ gameBoard, onSelect, winningSquares }) {
   return (
     <div id="board">
       {gameBoard.map((row, rowIndex) =>

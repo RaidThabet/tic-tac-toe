@@ -30,7 +30,14 @@ function deriveWinner(gameLog, gameBoard) {
       gameBoard[row][0] === gameBoard[row][1] &&
       gameBoard[row][1] === gameBoard[row][2]
     ) {
-      return gameBoard[row][0];
+      return {
+        winner: gameBoard[row][0],
+        winningSquares: [
+          [row, 0],
+          [row, 1],
+          [row, 2],
+        ],
+      };
     }
   }
 
@@ -41,7 +48,14 @@ function deriveWinner(gameLog, gameBoard) {
       gameBoard[0][col] === gameBoard[1][col] &&
       gameBoard[1][col] === gameBoard[2][col]
     ) {
-      return gameBoard[0][col];
+      return {
+        winner: gameBoard[0][col],
+        winningSquares: [
+          [0, col],
+          [1, col],
+          [2, col],
+        ],
+      };
     }
   }
 
@@ -51,21 +65,35 @@ function deriveWinner(gameLog, gameBoard) {
     gameBoard[0][0] === gameBoard[1][1] &&
     gameBoard[1][1] === gameBoard[2][2]
   ) {
-    return gameBoard[0][0];
+    return {
+      winner: gameBoard[0][0],
+      winningSquares: [
+        [0, 0],
+        [1, 1],
+        [2, 2],
+      ],
+    };
   }
   if (
     gameBoard[0][2] &&
     gameBoard[0][2] === gameBoard[1][1] &&
     gameBoard[1][1] === gameBoard[2][0]
   ) {
-    return gameBoard[0][2];
+    return {
+      winner: gameBoard[0][2],
+      winningSquares: [
+        [0, 2],
+        [1, 1],
+        [2, 0],
+      ],
+    };
   }
 
   if (gameLog.length === 9) {
-    return "DRAW";
+    return { winner: "DRAW", winningSquares: [] };
   }
 
-  return "NONE";
+  return { winner: "NONE", winningSquares: [] };
 }
 
 export default function Game() {
@@ -77,7 +105,7 @@ export default function Game() {
   // row, col: coordinates of the played square
   // player: the player who chose that square ('X' or 'O')
   const board = deriveGameBoard(gameLog);
-  const winner = deriveWinner(gameLog, board);
+  const { winner, winningSquares } = deriveWinner(gameLog, board);
   useEffect(() => {
     if (winner === "X") {
       setScore((currentScore) => ({ ...currentScore, X: currentScore.X + 1 }));
@@ -118,7 +146,16 @@ export default function Game() {
               onReset={handleReset}
               currentPlayer={currentPlayer}
             />
-            <Board gameBoard={board} onSelect={handleSelect} />
+            <Board
+              gameBoard={board}
+              onSelect={handleSelect}
+              winningSquares={winningSquares}
+            />
+            <span>
+              <button onClick={handleReset} id="reset">
+                Reset
+              </button>
+            </span>
           </>
         )}
         {(winner === "DRAW" || winner === "X" || winner === "O") && (

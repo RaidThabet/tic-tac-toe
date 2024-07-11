@@ -18,11 +18,11 @@ export default function Menu({ scoreX, scoreO, onReset, currentPlayer }) {
           symbol={"O"}
         />
       </span>
-      <span>
+      {/* <span>
         <button onClick={onReset} id="reset">
           Reset
         </button>
-      </span>
+      </span> */}
     </div>
   );
 }
