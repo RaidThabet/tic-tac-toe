@@ -1,10 +1,19 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-export default function Player({ initialName, symbol, active, score }) {
+export default function Player({
+  playerName,
+  symbol,
+  active,
+  score,
+  onChange,
+}) {
   const [isEditing, setIsEditing] = useState(false);
-  const [name, setName] = useState(initialName);
+  const [name, setName] = useState(playerName);
 
   function handleClick() {
+    if (isEditing) {
+      onChange(symbol, name);
+    }
     setIsEditing(!isEditing);
   }
 
@@ -17,7 +26,7 @@ export default function Player({ initialName, symbol, active, score }) {
     <span className={"player " + active}>
       {!isEditing && (
         <p className="player-name">
-          {name.toUpperCase()} <br /> ({score})
+          {name.toUpperCase()} <br /> {score}
         </p>
       )}
       {isEditing && (

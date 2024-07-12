@@ -1,28 +1,36 @@
 /* eslint-disable react/prop-types */
 import Player from "./Player";
 
-export default function Menu({ scoreX, scoreO, onReset, currentPlayer }) {
+export default function Menu({
+  nameX,
+  nameO,
+  scoreX,
+  scoreO,
+  currentPlayer,
+  onNameChange,
+}) {
+  function playerNameChange(symbol, newName) {
+    onNameChange(symbol, newName);
+  }
+
   return (
     <div className="menu-container">
       <span id="players">
         <Player
+          onChange={playerNameChange}
           score={scoreX}
           active={currentPlayer === "X" ? "playing" : ""}
-          initialName={"Player 1"}
+          playerName={nameX}
           symbol={"X"}
         />
         <Player
+          onChange={playerNameChange}
           score={scoreO}
           active={currentPlayer === "O" ? "playing" : ""}
-          initialName={"Player 2"}
+          playerName={nameO}
           symbol={"O"}
         />
       </span>
-      {/* <span>
-        <button onClick={onReset} id="reset">
-          Reset
-        </button>
-      </span> */}
     </div>
   );
 }

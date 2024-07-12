@@ -99,6 +99,7 @@ function deriveWinner(gameLog, gameBoard) {
 export default function Game() {
   const [gameLog, setGameLog] = useState([]);
   const [score, setScore] = useState({ X: 0, O: 0 });
+  const [names, setNames] = useState({ X: "Player 1", O: "Player 2" });
   // each element of the array is an object of the following form: { square: { row, col }, playerSymbol }
   // the array is sorted by time (newest selection is at index 0)
   // square: the played square
@@ -119,6 +120,18 @@ export default function Game() {
     currentPlayer = gameLog[0].playerSymbol === "X" ? "O" : "X";
   }
 
+  function handleNameChange(symbol, newName) {
+    if (symbol === "X") {
+      setNames((currentNames) => {
+        return { ...currentNames, X: newName };
+      });
+    } else {
+      setNames((currentNames) => {
+        return { ...currentNames, O: newName };
+      });
+    }
+  }
+
   function handleReset() {
     setGameLog([]);
   }
@@ -135,14 +148,18 @@ export default function Game() {
     });
     new Audio("../src/assets/draw.mp3").play();
   }
+
   return (
     <>
       <main>
         {winner === "NONE" && (
           <>
             <Menu
+              nameX={names.X}
+              nameO={names.O}
               scoreX={score.X}
               scoreO={score.O}
+              onNameChange={handleNameChange}
               onReset={handleReset}
               currentPlayer={currentPlayer}
             />
